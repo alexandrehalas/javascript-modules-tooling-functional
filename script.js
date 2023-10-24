@@ -4,10 +4,12 @@
 // addToCart('bread', 5);
 // console.log(price, tq);
 
-// import * as ShoppingCart from './shoppingCart.js';
-// console.log('Importing module');
-// ShoppingCart.addToCart('bread', 5);
-// console.log(ShoppingCart.totalPrice, ShoppingCart.tq);
+import { cloneDeep } from 'lodash-es';
+import * as ShoppingCart from './shoppingCart.js';
+console.log('Importing module');
+ShoppingCart.addToCart('bread', 5);
+ShoppingCart.addToCart('pizza', 3);
+console.log(ShoppingCart.totalPrice, ShoppingCart.tq);
 
 // default exports dont need curly braces to import
 // import add from './shoppingCart.js';
@@ -89,7 +91,11 @@ const { addTocart } = require('./shoppingCart.js');
 
 // INTRODUCTION TO NPM
 
-import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+// without parcel
+//import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+
+// with parcel
+import { cloneDeep } from 'lodash-es';
 
 const state = {
   cart: [
@@ -108,3 +114,8 @@ console.log('stateClone', stateClone);
 const stateDeepClone = cloneDeep(state);
 state.user.loggedIn = false;
 console.log('stateDeepClone', stateDeepClone);
+
+// use this to maintain state for tests with parcel
+if (module.hot) {
+  module.hot.accept();
+}
