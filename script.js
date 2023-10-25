@@ -119,3 +119,10 @@ console.log('stateDeepClone', stateDeepClone);
 if (module.hot) {
   module.hot.accept();
 }
+Promise.resolve('TEST').then(x => console.log(x));
+console.log(cart.find(el => el.quantity >= 2));
+import 'core-js/stable';
+//import 'core-js/stable/array/find';
+
+// Polifilling async functions
+import 'regenerator-runtime/runtime';
